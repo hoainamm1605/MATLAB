@@ -1,0 +1,29 @@
+function output = break_string(s, b)
+    % Tính toán số lượng chuỗi con cần lấy
+    n_chunks = length(b);
+
+    % Khởi tạo cell array đầu ra
+    output = cell(n_chunks, 1);
+
+    % Lấy các chuỗi con với độ dài đã cho
+    idx = 1;
+    for i = 1:n_chunks
+        % Lấy độ dài chuỗi con hiện tại
+        len = b(i);
+
+        % Lấy chuỗi con với độ dài đã cho
+        chunk = s(idx:idx+len-1);
+
+        % Lưu chuỗi con vào cell array đầu ra
+        output{i} = chunk;
+
+        % Tăng chỉ số bắt đầu cho chuỗi con tiếp theo
+        idx = idx + len;
+        
+        % Nếu không đủ ký tự để lấy chuỗi con tiếp theo, thoát vòng lặp
+        if idx > length(s)
+            break
+        end
+    end
+     output = output.';
+end
